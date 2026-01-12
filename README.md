@@ -29,6 +29,17 @@ npm run dev   # or: npm run build && npm run preview
 ```
 Frontend runs at http://localhost:5173 (shown in terminal).
 
+## Dataset Setup (Optional)
+The "Generate Sample Data" button requires the Kaggle Credit Card Fraud dataset for best results.
+
+**Download dataset:**
+1. Go to https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+2. Sign in (or create account)
+3. Click **Download**
+4. Extract the ZIP and place `creditcard.csv` in `backend/data/creditcard.csv`
+
+**Without the dataset:** You can still upload your own CSV files with an `Amount` column.
+
 ## API
 - `GET /api/health` — health check
 - `GET /api/sample-data` — returns analyzed sample (100 random Kaggle rows)
