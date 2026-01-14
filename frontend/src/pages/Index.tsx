@@ -7,7 +7,7 @@ import FileUpload from '@/components/FileUpload';
 import StatisticsCards from '@/components/StatisticsCards';
 import ChartsSection from '@/components/ChartsSection';
 import TransactionTable from '@/components/TransactionTable';
-import { analyzeFile, getSampleData, generateMockData, AnalysisResult } from '@/lib/api';
+import { analyzeFile, getSampleData, generateMockData, AnalysisResult } from '../lib/api';
 
 const Index = () => {
   const [isDark, setIsDark] = useState(false);
