@@ -1,12 +1,13 @@
-import { Shield, Moon, Sun } from 'lucide-react';
+import { Shield, Moon, Sun, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
   isDark: boolean;
   toggleDarkMode: () => void;
+  onBackToHome?: () => void;
 }
 
-const Header = ({ isDark, toggleDarkMode }: HeaderProps) => {
+const Header = ({ isDark, toggleDarkMode, onBackToHome }: HeaderProps) => {
   return (
     <header className="glass-card sticky top-0 z-50 border-b border-border/50 transition-theme">
       <div className="container mx-auto px-4 py-4">
@@ -27,6 +28,17 @@ const Header = ({ isDark, toggleDarkMode }: HeaderProps) => {
           </div>
 
           <div className="flex items-center gap-4">
+            {onBackToHome && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onBackToHome}
+                className="flex items-center gap-2 hover:bg-muted transition-all duration-300"
+              >
+                <Home className="h-4 w-4" />
+                <span className="hidden sm:inline">Back to Home</span>
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="icon"

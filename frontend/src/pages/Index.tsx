@@ -33,6 +33,11 @@ const Index = () => {
     setShowWelcome(false);
   };
 
+  const handleBackToHome = () => {
+    setShowWelcome(true);
+    setAnalysisResult(null);
+  };
+
   const handleFileUpload = async (file: File) => {
     setIsLoading(true);
     try {
@@ -79,7 +84,7 @@ const Index = () => {
     return (
       <div className="min-h-screen transition-theme">
         <ParticleBackground />
-        <WelcomeScreen onStart={handleStart} />
+        <WelcomeScreen onStart={handleStart} isDark={isDark} toggleDarkMode={toggleDarkMode} />
       </div>
     );
   }
@@ -87,8 +92,8 @@ const Index = () => {
   return (
     <div className="min-h-screen transition-theme">
       <ParticleBackground />
-      <Header isDark={isDark} toggleDarkMode={toggleDarkMode} />
-      
+      <Header isDark={isDark} toggleDarkMode={toggleDarkMode} onBackToHome={handleBackToHome} />
+
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
           <FileUpload
@@ -100,12 +105,12 @@ const Index = () => {
           {analysisResult && (
             <>
               <StatisticsCards statistics={analysisResult.statistics} />
-              
+
               <ChartsSection
                 riskDistribution={analysisResult.riskDistribution}
                 fraudComparison={analysisResult.fraudComparison}
               />
-              
+
               <TransactionTable transactions={analysisResult.transactions} />
             </>
           )}

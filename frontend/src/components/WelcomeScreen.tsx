@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Shield, ChevronRight, Upload, BarChart3, AlertTriangle } from 'lucide-react';
+import { Shield, ChevronRight, Upload, BarChart3, AlertTriangle, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface WelcomeScreenProps {
   onStart: () => void;
+  isDark: boolean;
+  toggleDarkMode: () => void;
 }
 
-const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
+const WelcomeScreen = ({ onStart, isDark, toggleDarkMode }: WelcomeScreenProps) => {
   const [showContent, setShowContent] = useState(false);
   const [showFeatures, setShowFeatures] = useState(false);
 
@@ -27,6 +29,22 @@ const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+      {/* Dark mode toggle in top-right corner */}
+      <div className="absolute top-4 right-4 z-20">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleDarkMode}
+          className="relative overflow-hidden rounded-full hover:bg-muted transition-all duration-300 glass-card"
+        >
+          {isDark ? (
+            <Sun className="h-5 w-5 text-warning transition-transform hover:rotate-45" />
+          ) : (
+            <Moon className="h-5 w-5 text-primary transition-transform hover:-rotate-12" />
+          )}
+        </Button>
+      </div>
+
       {/* Simplified background - removed heavy blur circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 gradient-primary rounded-full opacity-10" />
